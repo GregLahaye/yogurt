@@ -9,6 +9,7 @@ const EnableBlinking = Escape + "[?12h"
 const DisableBlinking = Escape + "[?12l"
 const EnableCursor = Escape + "[?25h"
 const DisableCursor = Escape + "[?25l"
+const ClearLine = Escape + "[2K"
 
 func Foreground(color string) string {
 	return fmt.Sprintf("%s[38;5;%sm", Escape, color)
