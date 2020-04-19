@@ -2,36 +2,42 @@ package yogurt
 
 import "fmt"
 
-const ESC = "\x1B"
-const ResetForeground = ESC + "[39m"
-const ResetBackground = ESC + "[49m"
-const EnableBlinking = ESC + "[?12h"
-const DisableBlinking = ESC + "[?12l"
+const Escape = "\x1B"
+const ResetForeground = Escape + "[39m"
+const ResetBackground = Escape + "[49m"
+const EnableBlinking = Escape + "[?12h"
+const DisableBlinking = Escape + "[?12l"
+const EnableCursor = Escape + "[?25h"
+const DisableCursor = Escape + "[?25l"
 
 func Foreground(color string) string {
-	return fmt.Sprintf("%s[38;5;%sm", ESC, color)
+	return fmt.Sprintf("%s[38;5;%sm", Escape, color)
 }
 
 func Background(color string) string {
-	return fmt.Sprintf("%s[48;5;%sm", ESC, color)
+	return fmt.Sprintf("%s[48;5;%sm", Escape, color)
 }
 
 func SetCursor(line, col int) {
-	fmt.Printf("%s[%d;%dH", ESC, line, col)
+	fmt.Printf("%s[%d;%dH", Escape, line, col)
+}
+
+func SetColumn(col int) {
+	fmt.Printf("%s[%dG", Escape, col)
 }
 
 func CursorUp(value int) {
-	fmt.Printf("%s[%dA", ESC, value)
+	fmt.Printf("%s[%dA", Escape, value)
 }
 
 func CursorDown(value int) {
-	fmt.Printf("%s[%dB", ESC, value)
+	fmt.Printf("%s[%dB", Escape, value)
 }
 
 func CursorForward(value int) {
-	fmt.Printf("%s[%dC", ESC, value)
+	fmt.Printf("%s[%dC", Escape, value)
 }
 
 func CursorBackward(value int) {
-	fmt.Printf("%s[%dD", ESC, value)
+	fmt.Printf("%s[%dD", Escape, value)
 }
