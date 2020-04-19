@@ -3,8 +3,10 @@ package yogurt
 import "fmt"
 
 const ESC = "\x1B"
-const ForegroundReset = ESC + "[39m"
-const BackgroundReset = ESC + "[49m"
+const ResetForeground = ESC + "[39m"
+const ResetBackground = ESC + "[49m"
+const EnableBlinking = ESC + "[?12h"
+const DisableBlinking = ESC + "[?12l"
 
 func Foreground(color string) string {
 	return fmt.Sprintf("%s[38;5;%sm", ESC, color)
