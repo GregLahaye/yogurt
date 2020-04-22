@@ -19,26 +19,22 @@ func Background(color string) string {
 	return fmt.Sprintf("%s[48;5;%sm", Escape, color)
 }
 
-func SetCursor(line, col int) {
-	fmt.Printf("%s[%d;%dH", Escape, line, col)
+func SetColumn(n int) string {
+	return fmt.Sprintf("%s[%dG", Escape, n)
 }
 
-func SetColumn(col int) {
-	fmt.Printf("%s[%dG", Escape, col)
+func CursorUp(n int) string {
+	return fmt.Sprintf("%s[%dA", Escape, n)
 }
 
-func CursorUp(value int) {
-	fmt.Printf("%s[%dA", Escape, value)
+func CursorDown(n int) string {
+	return fmt.Sprintf("%s[%dB", Escape, n)
 }
 
-func CursorDown(value int) {
-	fmt.Printf("%s[%dB", Escape, value)
+func CursorForward(n int) string {
+	return fmt.Sprintf("%s[%dC", Escape, n)
 }
 
-func CursorForward(value int) {
-	fmt.Printf("%s[%dC", Escape, value)
-}
-
-func CursorBackward(value int) {
-	fmt.Printf("%s[%dD", Escape, value)
+func CursorBackward(n int) string {
+	return fmt.Sprintf("%s[%dD", Escape, n)
 }
